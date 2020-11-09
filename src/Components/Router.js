@@ -3,12 +3,12 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
-import TopFiveMovies from "../Routes/TopFiveMovies";
-import Home from "../Routes/Home";
-import Tv from "../Routes/Tv";
-import Header from "../Components/Header";
-import Search from "../Routes/Search";
-import Detail from "../Routes/Detail";
+import TopFiveMovies from "Routes/TopFiveMovies";
+import Home from "Routes/Home";
+import Tv from "Routes/Tv";
+import Header from "Components/Header";
+import Search from "Routes/Search";
+import Detail from "Routes/Detail";
 
 
 export default () => (
