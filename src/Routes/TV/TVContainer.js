@@ -1,24 +1,48 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import TVPresenter from "./TVPresenter";
+import { tvApi } from "../../api";
 
-export default class extends React.Component {
-  state = {
-    topRated: null,
-    popular: null,
-    airingToday: null,
-    error: null,
-    loading: true,
-  };
-  render() {
-    const { topRated, popular, airingToday, error, loading } = this.state;
-    return (
-      <TVPresenter
-        topRated={topRated}
-        popular={popular}
-        airingToday={airingToday}
+export default () => {
+  const [topRatedes, setTopRatedes] = useState(null);
+  const [populars, setPopulars] = useState(null);
+  const [airingTodays, setAiringTodays] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getShows = async () => {
+    try {
+      const {
+        data: { results: topRated },
+      } = await tvApi.topRated();
+      const {
+        data: { results: popular },
+      } = await tvApi.popular();
+      const {
+        data: { results: airingToday },
+      } = await tvApi.airingToday();
+
+      setTopRatedes(topRated);
+      setPopulars(popular);
+      setAiringTodays(airingToday);
+
+    } catch {
+      setError("Can't find TV information.");      
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getShows();
+  }, []);
+  
+  return (
+    <TVPresenter
+        topRated={topRatedes}
+        popular={populars}
+        airingToday={airingTodays}
         error={error}
         loading={loading}
       />
-    );
-  }
+  )
 }

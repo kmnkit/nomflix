@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -29,25 +29,45 @@ const Item = styled.li`
   transition: border-bottom 0.5s ease-in-out;
 `;
 
-const SLink = styled(Link)`
+const SLink = styled(NavLink)`
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.7;
 `;
 
-export default withRouter(({ location: { pathname } }) => (
+const styles = {
+  opacity: 1,
+  borderBottom: "3px solid #2BC9E5",
+  transition: "all 1s"
+}
+
+export default () => {
+  return(
   <Header>
     <List>
-      <Item current={pathname === "/"}>
-        <SLink to="/">Movies</SLink>
+      <Item style={{fontSize: 40}}>
+        <SLink 
+        activeStyle = {styles}
+        exact to="/">🍿</SLink>
       </Item>
-      <Item current={pathname === "/tv"}>
-        <SLink to="/tv">TV</SLink>
+      <Item>
+        <SLink 
+          activeStyle = {styles}
+          exact to="/home">Movies</SLink>
       </Item>
-      <Item current={pathname === "/search"}>
-        <SLink to="/search">Search</SLink>
+      <Item>
+        <SLink 
+          activeStyle = {styles}
+          exact to="/tv">TV</SLink>
+      </Item>
+      <Item>
+        <SLink 
+          activeStyle = {styles}
+          to="/search">Search</SLink>
       </Item>
     </List>
   </Header>
-));
+  )
+}
