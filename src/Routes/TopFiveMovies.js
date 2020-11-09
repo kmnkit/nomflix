@@ -123,7 +123,7 @@ export default () => {
                             <Cover bgImage={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                         <Data>
                             <Title>{movie.original_title}</Title>
-                            <Vote><Star role='img'>⭐️</Star> : {movie.vote_average}</Vote>
+                            <Vote><Star role="img">⭐️</Star> : {movie.vote_average}</Vote>
                             <Popularity>Popularity : {movie.popularity}</Popularity>
                         </Data>
                         <Edge>{movie.original_title}</Edge>
