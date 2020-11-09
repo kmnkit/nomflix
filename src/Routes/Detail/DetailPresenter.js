@@ -9,6 +9,7 @@ import Overview from '../../Components/Overview';
 import Videos from "../Videos";
 import Production from "../Production";
 import Seasons from "../Seasons";
+import MovieCollection from "../MovieCollection";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -169,12 +170,15 @@ const DetailPresenter = ({ isMovie, pathname, result, loading, error }) =>
               <Link to={isMovie?(`/movie/${result.id}/productions`):(`/show/${result.id}/productions`)}>Production</Link>
               </ListItem>
               {
-                !isMovie ? (
+                isMovie ? ( result.belongs_to_collection? 
+                  (<ListItem active={pathname === `/movie/${result.id}/collection`}>
+                    <Link to={`/movie/${result.id}/collection`}>Collection</Link>
+                  </ListItem>) : (<div></div>)
+                ) : (
                   <ListItem active={pathname === `/show/${result.id}/seasons`}>
                     <Link to={`/show/${result.id}/seasons`}>Seasons</Link>
                   </ListItem>
-                ) : (
-                  <div></div>
+                  
                 )
               }
             </List>
@@ -184,6 +188,7 @@ const DetailPresenter = ({ isMovie, pathname, result, loading, error }) =>
                     render={() => 
               <Videos 
                 videos={result.videos.results} /> } />
+
             <Route path={isMovie? "/movie/:id/productions":
                                     "/show/:id/productions"} 
                     render={() => 
@@ -191,11 +196,12 @@ const DetailPresenter = ({ isMovie, pathname, result, loading, error }) =>
                 pathname={pathname}
                 companies={result.production_companies} 
                 countries={isMovie? result.production_countries: result.origin_country} />} />
-            <Route path={"/show/:id/seasons"} 
-                    render={() => 
-              <Seasons 
-                pathname={pathname}
-                seasons={result.seasons} />} />
+
+            <Route path={isMovie? "/movie/:id/collection":
+                                    "/show/:id/collection"} 
+                    render={() => isMovie? 
+                      <MovieCollection collection={result.belongs_to_collection} /> : 
+                      <Seasons seasons={result.seasons} />} />
         </Data>
       </Content>
     </Container>
