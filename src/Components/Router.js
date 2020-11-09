@@ -6,7 +6,7 @@ import {
 import Header from "./Header";
 import TopFiveMovies from "../Routes/TopFiveMovies";
 import Home from "../Routes/Home";
-import Tv from "../Routes/Tv";
+import Tv from "../Routes/TV";
 import Search from "../Routes/Search";
 import Detail from "../Routes/Detail";
 
