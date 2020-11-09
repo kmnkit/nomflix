@@ -20,7 +20,7 @@ const VideoContainer = styled.div`
 
 export default function Videos({videos}){
     const [loading, setLoading] = useState(true); 
-    const getVideo = async () => {
+    const getVideo = () => {
         try {
             console.log('비디오 로드 함',Object.keys(videos).length);
         } catch (error) {
