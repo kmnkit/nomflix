@@ -9,6 +9,15 @@ import { Helmet } from "react-helmet";
 const Title = styled.h1`
     color: white;
     font-size: 48px;
+    @media only screen and (min-width: 320px) and (max-width: 425px) {
+        font-size: 18px;
+    }
+    @media only screen and (min-width: 426) and (max-width: 768px) {
+        font-size: 24px;
+    }
+    @media only screen and (min-width: 769) and (max-width: 1024px) {
+        font-size: 24px;
+    }
 `;
 const Container = styled.div`
     width: 100%;
@@ -44,30 +53,82 @@ const Data = styled.div`
     flex-direction: column;
     position: absolute;
     left: 600px;
-    top: 10px;
+    top: 20px;
+    @media only screen and (min-width: 320px) and (max-width: 425px) {
+        left: 220px;
+    }
+    @media only screen and (min-width: 426px) and (max-width: 768px) {
+        left: 300px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        left: 400px;
+    }
 `;
 
 const Cover = styled.div`
-  left: 20px;
-  top: 20px;
-  width: 30%;
-  background-image: url(${(props) => props.bgImage});
-  background-position: center center;
-  background-size: cover;
-  height: 100%;
-  border-radius: 5px;
-  position: absolute;
-  z-index: 10;
+    left: 20px;
+    top: 20px;
+    width: 30%;
+    background-image: url(${(props) => props.bgImage});
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 10;
+    @media only screen and (min-width:320px) and (max-width: 425px) {
+    width: 190px;
+    height: 250px;
+    }
+
+    @media only screen and (min-width: 426px) and (max-width: 540px) {
+    width: 180px;
+    height: 250px;
+    }
+    @media only screen and (min-width: 541px) and (max-width: 768px) {
+        width: 250px;
+        height: 300px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        width: 350px;
+        height: 500px;
+    }
 `;
 
 const Popularity = styled.span`
     color: white;
     font-size: 30px;
+    @media only screen and (min-width:320px) and (max-width: 425px) {
+        font-size: 12px;
+    }
+
+    @media only screen and (min-width: 426px) and (max-width: 540px) {
+        font-size: 13px;
+    }
+    @media only screen and (min-width: 541px) and (max-width: 768px) {
+        font-size: 18px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        font-size: 24px;
+    }
 `;
 
 const Vote = styled.span`
     color: white;
     font-size: 35px;
+    @media only screen and (min-width:320px) and (max-width: 425px) {
+        font-size: 17px;
+    }
+
+    @media only screen and (min-width: 426px) and (max-width: 540px) {
+        font-size: 20px;
+    }
+    @media only screen and (min-width: 541px) and (max-width: 768px) {
+        font-size: 19px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        font-size: 24px;
+    }
 `;
 
 const Edge = styled.span`
@@ -94,10 +155,6 @@ export default () => {
         } finally{
             setLoading(false);
         }
-        const datas= results.forEach(async (movie) => {
-            return (movie, moviesApi.getVideo(movie.id));
-        })
-        console.log(datas);
     }
 
     useEffect(() => {
@@ -120,7 +177,7 @@ export default () => {
                     <SlideContainer key={movie.id}>
                         <Backdrop 
                             bgImage={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
-                            <Cover bgImage={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+                        <Cover bgImage={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                         <Data>
                             <Title>{movie.original_title}</Title>
                             <Vote><Star role="img">⭐️</Star> : {movie.vote_average}</Vote>

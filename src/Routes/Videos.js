@@ -9,13 +9,23 @@ import SliderSettings from "../Components/SliderSettings";
 const Container = styled.div`
     width: 52%;
     margin-left: 25px;
+    @media only screen and (min-width: 320px) and (max-width: 425px) {
+    width: 30%;
+    height: 200px;   
+    }
+    @media only screen and (min-width: 426px) and (max-width: 768px) {
+    width: 90%;
+    height: 450px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 100%;
+    height: 500px;
+    }
 `;
 
 const VideoContainer = styled.div`
     outline: none;
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
 `;
 
 export default function Videos({videos}){

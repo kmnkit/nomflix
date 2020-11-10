@@ -15,7 +15,7 @@ const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
   position: relative;
-  padding: 50px;
+  padding: 10px;
 `;
 
 const Backdrop = styled.div`
@@ -38,6 +38,16 @@ const Content = styled.div`
   z-index: 1;
   width: 100%;
   height: 100%;
+  @media only screen and (min-width: 320px) and (max-width: 425px) {
+    
+  }
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+    height: 60%;
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, 170px);
+    margin-left: 20px;
+  }
 `;
 
 const Cover = styled.div`
@@ -47,6 +57,18 @@ const Cover = styled.div`
   background-size: cover;
   height: 100%;
   border-radius: 5px;
+  @media only screen and (min-width: 320px) and (max-width: 425px) {
+    width: 50%;
+    height: 250px;   
+  }
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+    width: 40%;
+    height: 450px;
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 45%;
+    height: 500px;
+  }
 `;
 
 const Data = styled.div`

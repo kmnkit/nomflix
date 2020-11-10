@@ -11,23 +11,39 @@ const SlideContainer = styled.div`
 const Title = styled.div`
     color: white;
     font-size: 32px;
+    margin-bottom: 15px;
 `;
 const Container = styled.div`
     width: 100%;
     height: 300px;
-    padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: center;    
+    @media only screen and (min-width: 426px) and (max-width: 768px) {
+        width: 150px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        left: 400px;
+    }
 `;
 
 const Cover = styled.div`
-  width: 30%;
-  background-image: url(${(props) => props.bgImage});
-  background-position: center center;
-  background-size: cover;
-  width: 150px;
-  height: 100%;
-  border-radius: 5px;
+    width: 30%;
+    background-image: url(${(props) => props.bgImage});
+    background-position: center center;
+    background-size: cover;
+    width: 150px;
+    height: 100%;
+    border-radius: 8px;
+    @media only screen and (min-width: 320px) and (max-width: 425px) {
+        width: 180px;
+        height: 100%;
+    }
+    @media only screen and (min-width: 426px) and (max-width: 768px) {
+        width: 200px;
+    }
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        left: 400px;
+    }
 `;
 
 const settings = {
@@ -39,11 +55,13 @@ const settings = {
     slidesToScroll: 1,
     responsive: [
         {
-            breakpoint: 600,
+            breakpoint: 425,
             settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            },
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                fade: true,
+                speed: 500
+            }
         },
         {
             breakpoint: 768,

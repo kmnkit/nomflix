@@ -18,6 +18,18 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 125px);
   grid-gap: 25px;
+  @media only screen and (min-width: 320px) and (max-width: 425px) {
+    grid-template-columns: repeat(auto-fill, 150px);
+    margin-left: 30px;
+  }
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, 150px);
+    margin-left: 30px;
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, 170px);
+    margin-left: 20px;
+  }
 `;
 
 const Section = ({ title, children }) => (
